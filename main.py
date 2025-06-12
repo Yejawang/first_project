@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 
-# 이모지 및 텍스트 스타일 정의
+
 title_emoji = "🎉🪨📄✂️ 가위바위보 게임 🖐️🔥"
 choices = {
     "가위✌️": "✌️",
@@ -14,7 +14,7 @@ results_emoji = {
     "draw": "🤝 무승부 🤝"
 }
 
-# Streamlit 앱 UI 구성
+
 st.set_page_config(page_title="화려한 가위바위보 게임", page_icon="✂️")
 st.markdown(f"<h1 style='text-align:center; color:#ff4b4b;'>{title_emoji}</h1>", unsafe_allow_html=True)
 st.markdown("---")
@@ -26,7 +26,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 사용자 선택 UI
+
 user_choice = st.radio(
     "당신의 선택:",
     options=list(choices.keys()),
@@ -35,10 +35,10 @@ user_choice = st.radio(
 )
 
 if st.button("결과 보기!"):
-    # 컴퓨터 랜덤 선택
+   
     comp_choice = random.choice(list(choices.keys()))
 
-    # 결과 판정 함수
+  
     def judge(user, comp):
         if user == comp:
             return "draw"
@@ -51,7 +51,7 @@ if st.button("결과 보기!"):
 
     result = judge(user_choice, comp_choice)
 
-    # 결과 출력
+
     st.markdown("---")
     st.markdown(f"""
     <div style="background: linear-gradient(90deg, #f6d365, #fda085);
@@ -62,13 +62,13 @@ if st.button("결과 보기!"):
     </div>
     """, unsafe_allow_html=True)
 
-    # 축하 혹은 위로 이모지 애니메이션 (Streamlit 애니메이션용)
+    
     if result == "win":
         st.balloons()
     elif result == "lose":
         st.snow()
 
-# 하단 데코
+
 st.markdown("""
 <br><br>
 <footer style="text-align:center; font-size:14px; color:#aaa;">
